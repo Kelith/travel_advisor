@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline, Grid } from '@material-ui/core';
+import { getPlacesData } from './api/index';
 
 //import { getPlacesData, getWeatherData } from './api/travelAdvisorAPI';
 import Header from './components/Header/Header';
@@ -40,13 +41,13 @@ const App = () => {
       // getWeatherData(coords.lat, coords.lng)
       //   .then((data) => setWeatherData(data));
 
-      // getPlacesData(type, bounds.sw, bounds.ne)
-      //   .then((data) => {
-      //     setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
-      //     setFilteredPlaces([]);
-      //     setRating('');
-      //     setIsLoading(false);
-      //   });
+      getPlacesData(type, bounds.sw, bounds.ne)
+        .then((data) => {
+          setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+          setFilteredPlaces([]);
+          setRating('');
+          setIsLoading(false);
+        });
     }
   }, [bounds, type]);
 

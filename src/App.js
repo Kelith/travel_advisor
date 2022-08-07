@@ -42,7 +42,7 @@ const App = () => {
 
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
-          setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+          setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
           setFilteredPlaces([]);
           setRating('');
           setIsLoading(false);
@@ -62,7 +62,7 @@ const App = () => {
   return (
     <>
       <CssBaseline />
-      <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />
+      <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} setCoords={setCoords}/>
       <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
           <List

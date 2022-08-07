@@ -4,8 +4,9 @@ import { Paper, Typography, useMediaQuery } from "@material-ui/core";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Rating from "@material-ui/lab/Rating";
 import useStyles from "./MapStyles";
+import mapStyles from '../../mapStyles';
 
-function Map( { setCoords, setBounds, coords, places, setChildClicked}) {
+const Map = ( { setCoords, setBounds, coords, places, setChildClicked}) => {
   const classes = useStyles();
   const isDesktop = useMediaQuery("(min-width:600px)");
   
@@ -14,21 +15,20 @@ function Map( { setCoords, setBounds, coords, places, setChildClicked}) {
     <div className={classes.mapContainer}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyCr-eq9BpMKlBc5FoPgAaVPfmUqUitDRJ8" }}
-        defaultCenter={{ lat: -34.397, lng: 150.644 }}
-        defaultZoom={8}
-        center={{ lat: -34.397, lng: 150.644 }}
-        zoom={isDesktop ? 8 : 10}
+        defaultCenter={{ lat: -81.901693, lng: 41.303921 }}
+        defaultZoom={14}
+        center={coords}
+        zoom={isDesktop ? 14 : 16}
         margin={[50, 50, 50, 50]}
         options={{
           disableDefaultUI: true,
           zoomControl: true,
-          zoomControlOptions: {
-            position: "right",
-          },
+          styles: mapStyles
         }}
         onChange={(e) => {
-          setCoords({lat: e.center.lat, lng: e.center.lng});
-          setBounds({ ne: e.bounds.ne, sw: e.bounds.sw });
+          console.log({e})
+          setCoords({ lat: e.center.lat, lng: e.center.lng });
+          setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
         onChildClick={(child) => setChildClicked(child)}
       >

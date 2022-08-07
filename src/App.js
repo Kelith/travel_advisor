@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline, Grid } from '@material-ui/core';
-import { getPlacesData } from './api/index';
 
-//import { getPlacesData, getWeatherData } from './api/travelAdvisorAPI';
+import { getPlacesData, getWeatherData } from './api/index';
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
@@ -38,8 +37,8 @@ const App = () => {
     if (bounds) {
       setIsLoading(true);
 
-      // getWeatherData(coords.lat, coords.lng)
-      //   .then((data) => setWeatherData(data));
+      getWeatherData(coords.lat, coords.lng)
+        .then((data) => setWeatherData(data));
 
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {

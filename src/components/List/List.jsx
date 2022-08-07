@@ -9,8 +9,7 @@ function List( { places, childClicked, isLoading, type, setType, rating, setRati
   const [elRefs, setElRefs] = useState([])
 
   useEffect(() => {
-    const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef())
-    setElRefs(refs)
+    setElRefs((refs) => Array(places.length).fill().map((_, i) => refs[i] || createRef()));
   }, [places])
 
   return (
@@ -46,11 +45,11 @@ function List( { places, childClicked, isLoading, type, setType, rating, setRati
 
           <Grid container spacing={3} className={classes.list}>
             {places?.map((place, i) => (
-              <Grid item xs={12} key={i}>
+              <Grid ref={elRefs[i]} key={i} item xs={12}>
                 <PlaceDetails
-                  place={place}
-                  selected={i === Number(childClicked)}
+                  selected={Number(childClicked) === i}
                   refProp={elRefs[i]}
+                  place={place}
                 />
               </Grid>
             ))}

@@ -15,7 +15,7 @@ function PlaceDetails({ place, selected, refProp }) {
     <Card elevation={6}>
       <CardMedia
         style={{ height: 350}}
-        image={place.photos ? place.photo.images.large.url : 'https://www.ariston-ts.it/resources/img/restaurant.jpg'}
+        image={place.photo ? place.photo.images.large.url : 'https://www.ariston-ts.it/resources/img/restaurant.jpg'}
         title={place.name}
       />
       <CardContent>

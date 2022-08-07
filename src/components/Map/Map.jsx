@@ -23,7 +23,6 @@ const Map = ( { setCoords, setBounds, coords, places, setChildClicked}) => {
         options={{
           disableDefaultUI: true,
           zoomControl: true,
-          styles: mapStyles
         }}
         onChange={(e) => {
           console.log({e})
@@ -48,7 +47,7 @@ const Map = ( { setCoords, setBounds, coords, places, setChildClicked}) => {
                     {place.name}
                   </Typography>
                     <img 
-                      src={place.photos ? place.photo.images.large.url : 'https://www.ariston-ts.it/resources/img/restaurant.jpg'}
+                      src={place.photo ? place.photo.images.large.url : 'https://www.ariston-ts.it/resources/img/restaurant.jpg'}
                       alt={place.name}
                       className={classes.pointer}
                     />

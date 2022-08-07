@@ -23,6 +23,7 @@ const Map = ( { setCoords, setBounds, coords, places, setChildClicked}) => {
         options={{
           disableDefaultUI: true,
           zoomControl: true,
+          mapStyles: mapStyles,
         }}
         onChange={(e) => {
           setCoords({ lat: e.center.lat, lng: e.center.lng });
